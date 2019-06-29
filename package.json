@@ -7,4 +7,9 @@
     "node": "6.11.1",
     "mongodb": "*"
   }
+  "scripts": {
+  "start": "node app.js",
+  "build": "ng build",
+  "heroku-postbuild": "ng build --prod" // this will be run on Heroku
+}
 }
