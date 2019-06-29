@@ -12,9 +12,13 @@ Mongoose is an object document modeling (ODM) layer which sits on the top of Nod
 
 Then,
 Do Change your:
+
 i> app.js :-This is the main executable application file
+
 ii> public/index.html
+
 iii> public/signup_success.html
+
 iv> public/style.css
 
 Start the MongoDB.
