@@ -5,8 +5,8 @@
     "express": "^4.17.1",
     "node": "6.11.1",
     "mongodb": "*"
-  }
-  "scripts": {
+  },
+  "scripts" : {
   "start": "node app.js",
   "build": "ng build",
   "heroku-postbuild": "ng build --prod" 
