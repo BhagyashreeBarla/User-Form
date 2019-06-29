@@ -1,0 +1,110 @@
+<html> 
+<head> 
+	<title>User Form</title> 
+		
+		
+<link rel="stylesheet"
+href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+integrity= 
+"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+crossorigin="anonymous"> 
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script>
+function ValidateEmailAddr(emailAddress)
+{
+  var atSymbol = emailAddress.indexOf("@");                                  // Get the index of the '@'
+  var period = emailAddress.lastIndexOf(".");                                // Get the value of the last '.'
+  var suffix = emailAddress.substring(period + 1, emailAddress.length);
+  //Email validation
+  // Make sure the '@' symbol and '.' is in a valid location
+  if (((atSymbol != 0) && (atSymbol != -1)) && (suffix.length == 3) && (atSymbol < period) && (atSymbol != period - 1)) { 
+    if ((suffix == "com") || (suffix == "org") || (suffix == "gov") || (suffix == "net") || (suffix == "edu")) 
+      return true;
+  }
+  return false;
+}
+  function ValidateDob(form)
+  {
+    // regular expression to match required date format
+    re = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+
+    if(form.startdate.value != '') {
+      if(regs = form.startdate.value.match(re)) {
+        // day value between 1 and 31
+        if(regs[1] < 1 || regs[1] > 31) {
+          alert("Invalid value for day: " + regs[1]);
+          form.startdate.focus();
+          return false;
+        }
+        // month value between 1 and 12
+        if(regs[2] < 1 || regs[2] > 12) {
+          alert("Invalid value for month: " + regs[2]);
+          form.startdate.focus();
+          return false;
+        }
+        // year value between 1902 and 2019
+        if(regs[3] < 1992 || regs[3] > (new Date()).getFullYear()) {
+          alert("Invalid value for year: " + regs[3] + " - must be between 1992 and " + (new Date()).getFullYear());
+          form.startdate.focus();
+          return false;
+        }
+      } else {
+        alert("Invalid date format: " + form.startdate.value);
+        form.startdate.focus();
+        return false;
+      }
+    }
+}
+
+
+</script>
+
+
+</head> 
+<body> 
+	
+	<br> 
+	<br> 
+	<br> 
+	<div class="container" > 
+		<div class="row"> 
+		<div class="col-md-3"> 
+					
+		</div> 
+				
+		<div class="col-md-6 main"> 
+					
+			<form action="/user-form" method="post"> 
+					
+			<h1> User form </h1> 
+							
+			<input class="box" type="text" name="name" id="name"
+			placeholder="Name" required /><br> 
+							
+			<input class="box" type="date" onsubmit="ValidateDob(dob)"
+			id="dob" placeholder="Date Of Birth " required /><br>
+			
+
+			<input class="box" type="email" onsubmit="ValidateEmailAddr(email)" id="email"
+			placeholder="E-Mail " required /><br>  
+							
+			<input class="box" type="text" id="phone" maxlength="10" name="phone"
+			placeholder="Phone Number " required/><br> 
+						<br> 
+			<input type="submit" id="submitDetails"
+			name="submitDetails" value="Submit" /><br> 
+					
+			</form> 
+					
+		</div> 
+				
+				
+		<div class="col-md-3"> 
+		</div> 
+				
+	</div> 
+	</div> 
+</body> 
+</html>	 
